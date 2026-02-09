@@ -46,17 +46,17 @@ const ChatContainer = () => {
   }, [messages]);
 
   // ---------------- Incoming calls ----------------
-  useEffect(() => {
-    const calls = messages.filter(
-      (msg) =>
-        msg.text?.includes("/videoCall?roomID=") &&
-        msg.senderId !== authUser._id
-    );
+  // useEffect(() => {
+  //   const calls = messages.filter(
+  //     (msg) =>
+  //       msg.text?.includes("/videoCall?roomID=") &&
+  //       msg.senderId !== authUser._id
+  //   );
 
-    setIncomingCalls(
-      Array.from(new Map(calls.map((c) => [c._id, c])).values())
-    );
-  }, [messages, authUser._id]);
+  //   setIncomingCalls(
+  //     Array.from(new Map(calls.map((c) => [c._id, c])).values())
+  //   );
+  // }, [messages, authUser._id]);
 
   // ---------------- Handle Decline ----------------
   const handleDeclineCall = (message) => {

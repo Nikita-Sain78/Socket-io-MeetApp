@@ -7,7 +7,6 @@ import path from "path";
 
 import authRoutes from "./routes/auth.route.js"
 import messageRoutes from "./routes/message.route.js";
-// import videoRoutes from "./routes/video.route.js"
 import { app, server } from "./lib/socket.js";
 import dbConnection from "./dbConnection.js";
 
@@ -20,14 +19,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_API,
     credentials: true,
   })
 );
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
-// app.use("/api/video",videoRoutes)
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../my-app/dist")));

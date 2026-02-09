@@ -112,9 +112,7 @@ export const sendMessage = async (req, res) => {
 };
 
 export const getUnreadCounts = async (req, res) => {
-  try {
-
-    
+  try {    
     const myId = req.user._id;
 
     // Aggregate unread messages per sender
