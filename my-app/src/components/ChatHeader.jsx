@@ -34,14 +34,14 @@ const ChatHeader = () => {
     nav(`/videoCall?roomID=${roomID}`);
   };
 
+  console.log(selectedUser,"selectedUser")
   return (
     <div className="p-2.5 border-b border-base-300">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="avatar">
-            <div className="size-10 rounded-full relative">
-              <div>{selectedUser?.profilePic}</div>
-              <img src="/public/Avatar.png" alt="avatar"/>
+            <div className="size-7 rounded-full relative ">
+              <img src={selectedUser.profilePic} alt="avatar" className="size-6 object-fill"/>
             </div>
           </div>
 

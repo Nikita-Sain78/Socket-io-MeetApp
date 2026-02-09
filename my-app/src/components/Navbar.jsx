@@ -4,7 +4,7 @@ import { LogOut, MessageSquare, Settings, User } from "lucide-react";
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
-
+  // console.log("authuserdsd",authUser)
   return (
     <header
       className="bg-base-100 border-b border-base-300 w-full top-0 z-40 
@@ -35,8 +35,10 @@ const Navbar = () => {
             {authUser && (
               <>
                 <Link to={"/profile"} className={`btn btn-sm gap-2`}>
-                  <User className="size-5" />
-                  <span className="hidden sm:inline">Profile</span>
+                  {/* <User className="size-5" /> */}
+                  <img src={authUser.profilePic} className="size-7"/>
+                  {authUser.fullName}
+                  {/* <span className="hidden sm:inline">Profile</span> */}
                 </Link>
 
                 <button className="flex gap-2 items-center bg-black-100" onClick={logout}>

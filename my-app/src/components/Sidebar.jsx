@@ -91,9 +91,9 @@ const Sidebar = () => {
             {/* Avatar + Online indicator */}
             <div className="relative mx-auto lg:mx-0">
               <img
-                src="./public/Avatar.png"
+                src={user.profilePic}
                 alt={user.name}
-                className="size-6 object-cover rounded-full"
+                className="size-7 object-cover rounded-full"
               />
               {onlineUsers.includes(user._id) && (
                 <span
