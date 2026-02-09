@@ -150,14 +150,7 @@ const ChatContainer = () => {
       : "flex flex-col bg-gray-200 rounded-tl-lg rounded-tr-4xl rounded-br-4xl rounded-bl-4xl px-5 py-1.5"
   }`}
 >
-                {message.image && (
-                  <img
-                    src={authUser.profilePic}
-                    alt="Attachment"
-                    className="sm:max-w-[200px] rounded-md mb-2"
-                  />
-                )}
-
+              
                 {isCall ? (
                   message.senderId === authUser._id ? (
                     <p className="font-semibold">📞 You started a call</p>
