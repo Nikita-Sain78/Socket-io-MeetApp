@@ -19,7 +19,6 @@ import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/", // Ensure relative paths for assets in production
   plugins: [react()],
 
   define: {
@@ -36,9 +35,5 @@ export default defineConfig({
         },
       },
     },
-  },
-  server: {
-    host: "0.0.0.0",
-    port: Number(import.meta.process.env.PORT) || 5173,
   },
 });
