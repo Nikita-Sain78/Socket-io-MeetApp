@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export const useThemeStore = create((set) => ({
-  theme: sessionStorage.getItem("chat-theme") || "dark",
+  theme: sessionStorage.getItem("chat-theme") || "light",
   setTheme: (theme) => {
     sessionStorage.setItem("chat-theme", theme);
     set({ theme });

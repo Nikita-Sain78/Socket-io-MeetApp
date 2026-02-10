@@ -93,7 +93,7 @@ const Sidebar = () => {
               <img
                 src={user.profilePic}
                 alt={user.name}
-                className="size-7 object-cover rounded-full"
+                className="size-7 object-cover rounded-full ring-black"
               />
               {onlineUsers.includes(user._id) && (
                 <span
@@ -109,7 +109,7 @@ const Sidebar = () => {
               {onlineUsers.includes(user._id) ? "Online" : "Offline"}
 
                 {unreadCounts?.[user._id] > 0 && (
-                  <div className="text-red-600 text-xs">New messages</div>
+                  <div className="text-red-600 text-xs">New Messages</div>
                 )}
               </div>
             </div>

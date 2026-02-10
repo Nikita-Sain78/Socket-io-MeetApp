@@ -13,15 +13,15 @@ const Navbar = () => {
       <div className="container mx-auto px-5 h-16">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-2.5 hover:opacity-80 transition-all">
+            <Link to="/" className="flex items-center gap-8 hover:opacity-80 transition-all">
               <div className="size-9 rounded-lg bg-primary/10 flex items-center justify-center">
                 <MessageSquare className="w-5 h-5 text-primary" />
               </div>
-              <h1 className="text-lg font-bold">Meet App</h1>
+              <h1 className="text-lg font-bold uppercase">Chatterly</h1>
             </Link>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-8">
             {/* <Link
               to={"/settings"}
               className={`
@@ -43,7 +43,7 @@ const Navbar = () => {
 
                 <button className="flex gap-2 items-center bg-black-100" onClick={logout}>
                   <LogOut className="size-5" />
-                  <span className="hidden sm:inline text-xs">Logout</span>
+                  <span className="hidden sm:inline text-xs font-medium">Logout</span>
                 </button>
               </>
             )}
