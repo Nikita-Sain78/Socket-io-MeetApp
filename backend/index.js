@@ -9,7 +9,7 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
 import dbConnection from "./dbConnection.js";
-
+import path from "path";
 dotenv.config();
 
 const PORT = process.env.PORT;
@@ -24,6 +24,21 @@ app.use(
   }),
 );
 
+// --- Serve React build in production ---
+if (process.env.NODE_ENV === "production") {
+  // Serve static files from the React app
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+  // Catch all routes and return index.html
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+  });
+} else {
+  // Dev API health check
+  app.get("/", (req, res) => {
+    res.send("API running..");
+  });
+}
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "Server is running" });
 });
