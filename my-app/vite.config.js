@@ -36,4 +36,8 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    host: "0.0.0.0",
+    port: Number(import.meta.process.env.PORT) || 5173,
+  },
 });
