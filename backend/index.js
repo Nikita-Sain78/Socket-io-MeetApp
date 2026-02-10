@@ -5,7 +5,7 @@ import cors from "cors";
 
 import path from "path";
 
-import authRoutes from "./routes/auth.route.js"
+import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
 import dbConnection from "./dbConnection.js";
@@ -21,21 +21,26 @@ app.use(
   cors({
     origin: process.env.FRONTEND_API,
     credentials: true,
-  })
+  }),
 );
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../my-app/dist")));
+  const frontendPath = path.join(__dirname, "../my-app/dist");
+  app.use(express.static(frontendPath));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../my-app", "index.html"));
+  app.use((req, res, next) => {
+    if (!req.path.startsWith("/api")) {
+      res.sendFile(path.join(frontendPath, "index.html"));
+    } else {
+      next();
+    }
   });
 }
 
 server.listen(PORT, () => {
   console.log("server is running on PORT:" + PORT);
-  dbConnection()
+  dbConnection();
 });

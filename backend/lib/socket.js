@@ -1,13 +1,14 @@
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
-
+import { configDotenv } from "dotenv";
 const app = express();
 const server = http.createServer(app);
 
+configDotenv();
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173"],
+    origin: [process.env.FRONTEND_API],
   },
 });
 
@@ -34,8 +35,7 @@ io.on("connection", (socket) => {
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
   }
 
-  
-socket.on("typing", ({ senderId, receiverId }) => {
+  socket.on("typing", ({ senderId, receiverId }) => {
     console.log("Typing event received:", senderId, receiverId); // ✅ debug log
     const receiverSocketId = getReceiverSocketId(receiverId);
     if (receiverSocketId) {
@@ -56,7 +56,7 @@ socket.on("typing", ({ senderId, receiverId }) => {
 
     if (userId && userSocketMap[userId]) {
       userSocketMap[userId] = userSocketMap[userId].filter(
-        (id) => id !== socket.id
+        (id) => id !== socket.id,
       );
 
       if (userSocketMap[userId].length === 0) {
@@ -67,6 +67,5 @@ socket.on("typing", ({ senderId, receiverId }) => {
     }
   });
 });
-
 
 export { io, app, server };
