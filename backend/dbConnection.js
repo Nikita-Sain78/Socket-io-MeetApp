@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
-const MONGO_URI = "mongodb://127.0.0.1:27017/meetapp";
+import { configDotenv } from "dotenv";
+configDotenv();
+const MONGO_URI = process.env.MONGO_URL;
 const dbConnection = async () => {
   try {
     await mongoose.connect(MONGO_URI);
