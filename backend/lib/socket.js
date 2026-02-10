@@ -8,7 +8,9 @@ const server = http.createServer(app);
 configDotenv();
 const io = new Server(server, {
   cors: {
-    origin: [process.env.FRONTEND_API],
+    origin: "https://socket-io-meetapp.onrender.com/", // Allow all origins
+    credentials: true,
+    // origin: [process.env.FRONTEND_API],
   },
 });
 
