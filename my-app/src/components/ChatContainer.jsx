@@ -11,7 +11,7 @@ const ChatContainer = () => {
     messages,
     users,
     typingUsers,
-    getMessages,
+    // getMessages,
     isMessagesLoading,
     selectedUser,
     subscribeToMessages,
@@ -29,7 +29,7 @@ const ChatContainer = () => {
   useEffect(() => {
     if (!selectedUser?._id) return;
 
-    getMessages(selectedUser._id);
+    // getMessages(selectedUser._id);
     subscribeToMessages();
     subscribeToTyping();
 
